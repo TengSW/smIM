@@ -51,7 +51,9 @@ public class IMWorker {
 	
 	public void run(){
 		System.out.println("检测网络中...");
-		Connect("public", "public");// 目前只能用guest/guest连接
+		//Connect("public", "public");// 目前只能用guest/guest连接
+//		Connect("guest", "guest");// 目前只能用guest/guest连接
+		Connect("public", "supermapcloud");// 目前只能用guest/guest连接
 		
 		Chat();
 	}
@@ -133,7 +135,8 @@ public class IMWorker {
 	{// 连接消息服务，需要根据回传的状态信息才能判断是否连接成功，参见 onSMBStatusChanged(...)方法
 		m_SMBClient.setSender(m_strSender);  		// 发送者
 		m_SMBClient.setInExchangeParam( m_strInExchange, "fanout", false, "" );
-		m_SMBClient.setOutExchangeParam( "MapDroid", "direct", true, "smGateWay");
+		m_SMBClient.setOutExchangeParam( m_strInExchange, "fanout", false, "" );
+//		m_SMBClient.setOutExchangeParam( "MapDroid", "direct", true, "smGateWay");
 		
 		m_SMBClient.setTargetExchange(m_strTargetExchange); // 目的频道
 		
